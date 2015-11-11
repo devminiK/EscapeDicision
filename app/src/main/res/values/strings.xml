@@ -5,4 +5,5 @@
     <string name="memo_name">메모</string>
     <string name="write_memo_name">메모 작성</string>
     <string name="favorite_name">즐겨찾기</string>
+    <string name="game_help">도움말\n어쩌고 저꺼고</string>
 </resources>

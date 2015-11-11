@@ -17,4 +17,10 @@
     <style name="ToolBarStyle" parent="Theme.AppCompat">
         <item name="android:textColorPrimary">@android:color/white</item>
     </style>
+    <style name="CaseEditTextTheme">
+        <!-- colorControlNormal 포커스가 안되었을때 -->
+        <item name="colorControlNormal">#cfd8dc</item>
+        <item name="colorControlActivated">@color/colorPrimary</item>
+        <!-- colorControlActivated 포커스 되었을때 -->
+    </style>
 </resources>
