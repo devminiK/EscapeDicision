@@ -20,15 +20,20 @@
         <activity
             android:name=".Activity.SoloPlayActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"
-            android:theme="@style/lightTheme" />
-        <activity android:name=".Activity.MemoActivity"
+            android:theme="@style/lightTheme"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".Activity.MemoActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/lightTheme">
+            android:theme="@style/lightTheme" >
         </activity>
-        <activity android:name=".Activity.MultiplayActivity"
+        <activity
+            android:name=".Activity.MultiplayActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/lightTheme">
+            android:theme="@style/lightTheme" >
+        </activity>
+        <activity android:name=".CustomBase.BaseDrawerActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
         </activity>
     </application>
 

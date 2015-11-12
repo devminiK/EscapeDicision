@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.game.escape.escapedicision.R;
@@ -42,48 +41,43 @@ public class AdapterSoloplay extends BaseAdapter {
     public long getItemId(int position) {
         return position;
     }
-    private void reorder(){
-        for (int i =0; i<caselist.size(); i++) {
-            ItemSoloplayCase temp = caselist.get(i);
-            temp.order.setText(Integer.toString(i + 1));
-        }
 
-    }
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-        final ItemSoloplayCase holder;
+        final Viewholder holder;
         if (convertView == null){
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.item_case_input, parent, false);
-            holder = new ItemSoloplayCase();
-            holder.item = (RelativeLayout)convertView.findViewById(R.id.item_case);
+            holder = new Viewholder();
             holder.order = (TextView) convertView.findViewById(R.id.order_num);
-            holder.input = (EditText)convertView.findViewById(R.id.input_case);
-            holder.clear = (ImageButton)convertView.findViewById(R.id.remove_case);
+            holder.editText = (EditText)convertView.findViewById(R.id.input_case);
+            holder.button_clear = (ImageButton)convertView.findViewById(R.id.remove_case);
             //순서는 현재 크기만큼
             holder.order.setText(Integer.toString(getCount()));
+
             convertView.setTag(holder);
         }
         else
-            holder = (ItemSoloplayCase)convertView.getTag();
+            holder = (Viewholder)convertView.getTag();
+
 
         //클리어를 눌럿을때 제거하고 순서를 재정렬하고 갱신시킨다
-        holder.clear.setOnClickListener(new View.OnClickListener() {
+        holder.button_clear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ItemSoloplayCase item = (ItemSoloplayCase)getItem(position);
+                item = null;
                 caselist.remove(position);
                 notifyDataSetChanged();
-                //holder.item.setVisibility(View.GONE);
                 num_case.setText(Integer.toString(caselist.size()));
-                //reorder();
             }
         });
+
         return convertView;
     }
-/*
     class Viewholder {
         private EditText editText;
         private TextView order;
         private ImageButton button_clear;
-    }*/
+    }
 }

@@ -2,15 +2,15 @@ package com.game.escape.escapedicision.Activity;
 
 import android.os.Bundle;
 
-import com.game.escape.escapedicision.CustomBase.BaseActivity;
+import com.game.escape.escapedicision.CustomBase.BaseDrawerActivity;
 import com.game.escape.escapedicision.R;
 
-public class MemoActivity extends BaseActivity {
+public class MemoActivity extends BaseDrawerActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_memo);
+        initFromOtherView(R.layout.activity_memo);
     }
 
     @Override

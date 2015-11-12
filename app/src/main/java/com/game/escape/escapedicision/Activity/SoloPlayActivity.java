@@ -12,13 +12,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.game.escape.escapedicision.CustomBase.AdapterSoloplay;
-import com.game.escape.escapedicision.CustomBase.BaseActivity;
+import com.game.escape.escapedicision.CustomBase.BaseDrawerActivity;
 import com.game.escape.escapedicision.CustomBase.ItemSoloplayCase;
 import com.game.escape.escapedicision.R;
 
 import java.util.ArrayList;
 
-public class SoloPlayActivity extends BaseActivity implements View.OnClickListener{
+public class SoloPlayActivity extends BaseDrawerActivity implements View.OnClickListener{
     private ListView case_list;
     private RelativeLayout add_case;
     private TextView num_case_textview;
@@ -29,7 +29,8 @@ public class SoloPlayActivity extends BaseActivity implements View.OnClickListen
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_solo_play);
+        //setContentView(R.layout.activity_solo_play);
+        initFromOtherView(R.layout.activity_solo_play);
         initView();
         //처음에는 경우의 수가 아무것도 없음
         num_case_textview.setText("0");
@@ -52,26 +53,30 @@ public class SoloPlayActivity extends BaseActivity implements View.OnClickListen
     protected String getActionbarTitle() {
         return getString(R.string.solo_play_name);
     }
-    //뒤로가기가 눌렸을때 다이얼로그 띄우기
+    //뒤로가기가 눌렸을때 추가한 경우의 수가 있을경우에만 다이얼로그 띄우고 경우의수가 비었다면 그냥 종료
     @Override
     public void onBackPressed() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("입력한 경우의 수는 모두 사라집니다. 정말로 닫겠습니까?")
-                .setCancelable(false)
-                .setPositiveButton("확인", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        SoloPlayActivity.this.finish();
-                    }
-                })
-                .setNegativeButton("취소", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
-        AlertDialog alert = builder.create();
-        alert.show();
+        if (!caseArrayList.isEmpty()) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("입력한 경우의 수는 모두 사라집니다. 정말로 닫겠습니까?")
+                    .setCancelable(false)
+                    .setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            SoloPlayActivity.this.finish();
+                        }
+                    })
+                    .setNegativeButton("취소", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+            AlertDialog alert = builder.create();
+            alert.show();
+        }
+        else
+            SoloPlayActivity.this.finish();
     }
 
     @Override
