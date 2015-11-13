@@ -32,9 +32,11 @@
             android:screenOrientation="portrait"
             android:theme="@style/lightTheme" >
         </activity>
+        <!--
         <activity android:name=".CustomBase.BaseDrawerActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
+            android:theme="@style/lightTheme">
         </activity>
+        -->
     </application>
 
 </manifest>
