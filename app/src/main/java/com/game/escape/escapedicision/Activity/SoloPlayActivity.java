@@ -35,7 +35,7 @@ public class SoloPlayActivity extends BaseDrawerActivity implements View.OnClick
         //처음에는 경우의 수가 아무것도 없음
         num_case_textview.setText("0");
         caseArrayList = new ArrayList<ItemSoloplayCase>();
-        adapter = new AdapterSoloplay(this, caseArrayList, num_case_textview);
+        adapter = new AdapterSoloplay(this, R.layout.item_case_input, caseArrayList);
         case_list.setAdapter(adapter);
     }
 
@@ -48,6 +48,13 @@ public class SoloPlayActivity extends BaseDrawerActivity implements View.OnClick
         case_list = (ListView)findViewById(R.id.case_list);
         //리스트뷰에서 포커스를 잃지 않도록 한다.
         case_list.setDescendantFocusability(ViewGroup.FOCUS_AFTER_DESCENDANTS);
+    }
+    public void removeCase(View v){
+        //키보드를 숨기고 뷰를 통해 지울 아이템을 갖고와서 지운다.
+        ItemSoloplayCase removeitem = (ItemSoloplayCase)v.getTag();
+        adapter.remove(removeitem);
+        num_case_textview.setText(Integer.toString(caseArrayList.size()));
+        adapter.changeOrderTag();
     }
     @Override
     protected String getActionbarTitle() {
@@ -86,13 +93,17 @@ public class SoloPlayActivity extends BaseDrawerActivity implements View.OnClick
                 Toast.makeText(getApplicationContext(), "게임시작 버튼 누름", Toast.LENGTH_SHORT);
                 break;
             case R.id.add_case:
-                //경우의수 추가
-                ItemSoloplayCase additem = new ItemSoloplayCase();
-                caseArrayList.add(additem);
+                //포커스가 되어있을경우 확인불가
+                // 키보드를숨기고 어댑터에 추가하고 순서정력
+                adapter.insert(new ItemSoloplayCase(""), 0);
+                adapter.changeOrderTag();
+                //경우의 수 글자는 어레이리스트의 사이즈로
                 num_case_textview.setText(Integer.toString(caseArrayList.size()));
                 adapter.notifyDataSetChanged();
                 break;
         }
     }
+
+
 
 }

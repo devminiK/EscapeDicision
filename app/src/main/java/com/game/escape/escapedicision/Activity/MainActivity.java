@@ -81,7 +81,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 tempToast.show();
                 break;
             case R.id.memo : startnewActivity(new Intent(this, MemoActivity.class));
-                tempToast.show();
                 break;
             case R.id.quit : finishDialog();
         }

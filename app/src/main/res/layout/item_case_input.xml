@@ -23,6 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@mipmap/ic_remove_case"
+        android:onClick="removeCase"
         android:paddingLeft="8dp"
         android:paddingRight="12dp"
         android:background="@android:color/transparent"/>

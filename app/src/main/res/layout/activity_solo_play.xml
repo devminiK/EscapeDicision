@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorBackgroundLight"
     android:orientation="vertical"
+    android:id="@+id/parent"
     tools:context="com.game.escape.escapedicision.Activity.SoloPlayActivity">
 
     <include layout="@layout/toolbar" />
@@ -91,6 +92,7 @@
             android:background="@drawable/bg_button"/>
         <ListView
             android:id="@+id/case_list"
+            tools:listitem="@layout/item_case_input"
             android:layout_below="@id/case_list_title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

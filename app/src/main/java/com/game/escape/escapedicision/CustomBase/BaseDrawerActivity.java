@@ -1,5 +1,6 @@
 package com.game.escape.escapedicision.CustomBase;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,8 +10,13 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 
 import com.game.escape.escapedicision.Activity.MemoActivity;
@@ -74,6 +80,8 @@ public abstract class BaseDrawerActivity extends AppCompatActivity {
         FrameLayout frameLayout = (FrameLayout) findViewById(R.id.drawer_frame);
         View view = LayoutInflater.from(this).inflate(LayoutId, frameLayout, false);
         frameLayout.addView(view);
+        //이 클래스를 상속받는 모든 액티비티의 상위 레이아웃에 parent id선언한다
+        setupUI(findViewById(R.id.parent));
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_widget);
         /*
@@ -96,7 +104,12 @@ public abstract class BaseDrawerActivity extends AppCompatActivity {
                 Log.v("태그", "토글이 널임");*/
             drawerLayout.setDrawerListener(drawerToggle);
             setSupportActionBar(toolbar);
-            getSupportActionBar().setTitle(getActionbarTitle());
+            try {
+                getSupportActionBar().setTitle(getActionbarTitle());
+            }
+            catch (NullPointerException e){
+                Log.e("Actionbar", "actionbar is null");
+            }
             toolbar.setNavigationIcon(R.mipmap.ic_navidrawer);
             toolbar.setNavigationOnClickListener(new View.OnClickListener() {
                 @Override
@@ -121,6 +134,31 @@ public abstract class BaseDrawerActivity extends AppCompatActivity {
     }
 
     protected abstract String getActionbarTitle();
+
+    public void setupUI(View view) {
+        //Set up touch listener for non-text box views to hide keyboard.
+        if(!(view instanceof EditText)) {
+            view.setOnTouchListener(new View.OnTouchListener() {
+                public boolean onTouch(View v, MotionEvent event) {
+                    Log.d("영역선택", "완료");
+                    hideKeyboard();
+                    return false;
+                }
+            });
+        }
+
+        //If a layout container, iterate over children and seed recursion.
+        if (view instanceof ViewGroup) {
+            for (int i = 0; i < ((ViewGroup) view).getChildCount(); i++) {
+                View innerView = ((ViewGroup) view).getChildAt(i);
+                setupUI(innerView);
+            }
+        }
+    }
+    private void hideKeyboard(){
+        InputMethodManager inputManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputManager.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+    }
 
     private void killApplication() {
         //drawerLayout.closeDrawers();
