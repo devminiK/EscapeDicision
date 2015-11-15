@@ -28,6 +28,7 @@ public abstract class BaseDrawerActivity extends AppCompatActivity {
     protected ActionBarDrawerToggle drawerToggle;
     protected DrawerLayout drawerLayout;
     protected Toolbar toolbar;
+    private int nowLayout_num; //현재 레이아웃 위치 1솔로, 2함께, 3즐겨찾기, 4메모장
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,12 +76,27 @@ public abstract class BaseDrawerActivity extends AppCompatActivity {
         });
     }
 
+    private void initNowLayout(int id){
+        switch (id){
+            case R.layout.activity_solo_play : nowLayout_num = 1;
+                break;
+            case R.layout.activity_multiplay : nowLayout_num = 2;
+                break;
+            case R.layout.activity_memo : nowLayout_num = 4;
+                break;
+        }
+        Log.d("id", Integer.toString(nowLayout_num));
+    }
+
     protected void initFromOtherView(int LayoutId) {
         //눌럿을때의 액티비티를 갖고와서 프레임레이아웃과 인플레이터를 시켜서 뷰에 보여준다.
+        //현재 띄어진 레이아웃 아이디 태그로 하여 저장. 1솔로, 2함께, 3즐찾, 4메모
+        initNowLayout(LayoutId);
         FrameLayout frameLayout = (FrameLayout) findViewById(R.id.drawer_frame);
         View view = LayoutInflater.from(this).inflate(LayoutId, frameLayout, false);
         frameLayout.addView(view);
         //이 클래스를 상속받는 모든 액티비티의 상위 레이아웃에 parent id선언한다
+        //최상위 레이아웃아이디를 넘겨주고 터치한 부분이 edittext가 아니면 키보드를 닫는다
         setupUI(findViewById(R.id.parent));
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_widget);
@@ -140,7 +156,7 @@ public abstract class BaseDrawerActivity extends AppCompatActivity {
         if(!(view instanceof EditText)) {
             view.setOnTouchListener(new View.OnTouchListener() {
                 public boolean onTouch(View v, MotionEvent event) {
-                    Log.d("영역선택", "완료");
+                    //Log.d("영역선택", "완료");
                     hideKeyboard();
                     return false;
                 }
