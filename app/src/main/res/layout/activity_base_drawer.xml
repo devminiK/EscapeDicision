@@ -11,58 +11,68 @@
         android:layout_height="match_parent" />
 
     <LinearLayout
-        android:layout_width="200dp"
+        android:layout_width="275dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="@color/colorBackgroundDark"
+        android:background="@color/colorBackgroundLight"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="56dp">
-        <ImageButton
+            android:layout_height="56dp"
+            android:background="#F0F0F0"
             android:id="@+id/close_drawer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="6dp"
-            android:layout_marginTop="8dp"
-            android:background="@android:color/transparent"
-            android:padding="4dp"
-            android:src="@mipmap/ic_back" />
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
+                android:background="@android:color/transparent"
+                android:padding="4dp"
+                android:src="@mipmap/ic_back_red"/>
+
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="닫기"
+                android:layout_marginLeft="4dp"
+                android:textSize="22dp"
+                android:textColor="@color/colorPrimary"/>
         </LinearLayout>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="54dp"
             android:gravity="center_horizontal">
 
             <ImageButton
                 android:id="@+id/button_soloplay"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="116dp"
+                android:layout_height="116dp"
                 android:background="@android:color/transparent"
+                android:padding="4dp"
                 android:scaleType="fitCenter"
-                android:src="@mipmap/img_solo_play" />
+                android:src="@mipmap/img_n_solo_play"/>
 
             <ImageButton
                 android:id="@+id/button_multiplay"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_marginLeft="12dp"
+                android:layout_width="116dp"
+                android:layout_height="116dp"
+                android:layout_marginLeft="16dp"
+                android:padding="4dp"
                 android:background="@android:color/transparent"
                 android:scaleType="fitCenter"
-                android:src="@mipmap/img_multi_play" />
+                android:src="@mipmap/img_n_multi_play" />
         </LinearLayout>
 
         <RelativeLayout
             android:id="@+id/button_favorite"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
 
             <TextView
                 android:id="@+id/text_favorite"
@@ -71,22 +81,33 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:text="@string/favorite_name"
-                android:textColor="@color/colorWhite" />
+                android:textColor="@color/colorCase"
+                android:textSize="18dp"/>
 
             <View
-                android:layout_width="120dp"
+                android:id="@+id/bar_favorite"
+                android:layout_width="116dp"
                 android:layout_height="2dp"
                 android:layout_below="@id/text_favorite"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="3dp"
-                android:background="@color/colorBackgroundLight" />
+                android:background="@color/colorCase" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/bar_favorite"
+                android:layout_alignTop="@id/text_favorite"
+                android:layout_marginTop="3dp"
+                android:layout_marginRight="12dp"
+                android:src="@mipmap/ic_navi_favorite"/>
         </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/button_memo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp">
+            android:layout_marginTop="24dp">
 
             <TextView
                 android:id="@+id/text_memo"
@@ -95,22 +116,33 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:text="@string/memo_name"
-                android:textColor="@color/colorWhite" />
+                android:textColor="@color/colorCase"
+                android:textSize="18dp"/>
 
             <View
-                android:layout_width="120dp"
+                android:id="@+id/bar_memo"
+                android:layout_width="116dp"
                 android:layout_height="2dp"
                 android:layout_below="@id/text_memo"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="3dp"
-                android:background="@color/colorBackgroundLight" />
+                android:background="@color/colorCase" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/bar_memo"
+                android:layout_alignTop="@id/text_memo"
+                android:layout_marginTop="3dp"
+                android:layout_marginRight="15dp"
+                android:src="@mipmap/ic_navi_memo"/>
         </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/button_quit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp">
+            android:layout_marginTop="24dp">
 
             <TextView
                 android:id="@+id/text_quit"
@@ -119,15 +151,26 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:text="종료"
-                android:textColor="@color/colorWhite" />
+                android:textColor="@color/colorCase"
+                android:textSize="18dp"/>
 
             <View
-                android:layout_width="120dp"
+                android:id="@+id/bar_quit"
+                android:layout_width="116dp"
                 android:layout_height="2dp"
                 android:layout_below="@id/text_quit"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="3dp"
-                android:background="@color/colorBackgroundLight" />
+                android:background="@color/colorCase" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/bar_quit"
+                android:layout_alignTop="@id/text_quit"
+                android:layout_marginTop="3dp"
+                android:layout_marginRight="12dp"
+                android:src="@mipmap/ic_navi_quit"/>
         </RelativeLayout>
     </LinearLayout>
 </android.support.v4.widget.DrawerLayout>
