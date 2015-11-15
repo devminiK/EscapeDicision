@@ -24,6 +24,7 @@ public class SoloPlayActivity extends BaseDrawerActivity implements View.OnClick
     private TextView num_case_textview;
     private Button start_button;
     ArrayList<ItemSoloplayCase> caseArrayList;
+    ArrayList<String> stringCaselist;
     AdapterSoloplay adapter;
 
     @Override
@@ -33,9 +34,11 @@ public class SoloPlayActivity extends BaseDrawerActivity implements View.OnClick
         initFromOtherView(R.layout.activity_solo_play);
         initView();
         //처음에는 경우의 수가 아무것도 없음
-        num_case_textview.setText("0");
+        num_case_textview.setText("1");
         caseArrayList = new ArrayList<ItemSoloplayCase>();
         adapter = new AdapterSoloplay(this, R.layout.item_case_input, caseArrayList);
+        //처음에 경우의수가 하나부터 잇을경우. 크기를 1로 시작.
+        adapter.insert(new ItemSoloplayCase(1, ""), 0);
         case_list.setAdapter(adapter);
     }
 
@@ -85,25 +88,42 @@ public class SoloPlayActivity extends BaseDrawerActivity implements View.OnClick
         else
             SoloPlayActivity.this.finish();
     }
+    private boolean toCaseString(){
+        //케이스에 있는 경우의 수를 하나씩 가져와서 스트링에 넣는다. 비어있을 경우 false를 반환하고 제대로 되었다면 add
+        stringCaselist = new ArrayList<String>();
+        for (int i = 0; i<caseArrayList.size(); i++){
+            String temp = caseArrayList.get(i).getInput();
+            //Log.d("input", temp);
+            if (temp.equals("")){
+                //Log.d("string", "data is null");
+                return false;
+            }
+            else{
+                //Log.d("string", "data is good");
+                stringCaselist.add(temp);
+            }
+        }
+        return true;
+    }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.game_start:
-                Toast.makeText(getApplicationContext(), "게임시작 버튼 누름", Toast.LENGTH_SHORT);
+                //리스트가 없을경우, 리스트의 내용이 비었을경우
+                if (!toCaseString()||caseArrayList.isEmpty())
+                    Toast.makeText(getApplicationContext(), "경우의 수를 제대로 입력해주세요.", Toast.LENGTH_SHORT).show();
+                else
+                    Toast.makeText(getApplicationContext(), "경우의 수가 제대로 됨", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.add_case:
-                //포커스가 되어있을경우 확인불가
-                // 키보드를숨기고 어댑터에 추가하고 순서정력
+                //에딧 텍스트 이외의 포커스를 누를경우 키보드를 닫는다.(어댑터 내 getview)
                 adapter.insert(new ItemSoloplayCase(""), 0);
+                //경우의 수 순서 태그는 추가 버튼을 누를때마다 순서대로 갱신
                 adapter.changeOrderTag();
-                //경우의 수 글자는 어레이리스트의 사이즈로
-                num_case_textview.setText(Integer.toString(caseArrayList.size()));
+                //num_case_textview.setText(Integer.toString(caseArrayList.size()));
                 adapter.notifyDataSetChanged();
                 break;
         }
     }
-
-
-
 }

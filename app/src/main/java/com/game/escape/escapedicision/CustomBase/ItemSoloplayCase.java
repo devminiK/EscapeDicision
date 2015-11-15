@@ -13,6 +13,10 @@ public class ItemSoloplayCase implements Serializable{
     public ItemSoloplayCase(String input){
         this.input = input;
     }
+    public ItemSoloplayCase(int order, String input){
+        this.order = order;
+        this.input = input;
+    }
     public void setOrder(int order){
         this.order = order;
     }
