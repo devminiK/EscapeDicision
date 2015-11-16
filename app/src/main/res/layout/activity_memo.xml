@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorBackgroundLight"
     android:orientation="vertical"
-    tools:context="com.game.escape.escapedicision.Activity.SoloPlayActivity">
+    tools:context="com.game.escape.escapedicision.Activity.MemoActivity">
 
     <include layout="@layout/toolbar" />
 

@@ -2,6 +2,7 @@ package com.game.escape.escapedicision.Activity;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v4.view.GravityCompat;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,7 +37,7 @@ public class SoloPlayActivity extends BaseDrawerActivity implements View.OnClick
         //처음에는 경우의 수가 2개부터
         num_case_textview.setText("2");
         caseArrayList = new ArrayList<ItemSoloplayCase>();
-        adapter = new AdapterSoloplay(this, R.layout.item_case_input, caseArrayList);
+        adapter = new AdapterSoloplay(this, R.layout.item_solo_case_input, caseArrayList);
         //처음에 경우의수가 두개부터 잇을경우. 태그는 거꾸로 만들어줌
         adapter.insert(new ItemSoloplayCase(2, ""), 0);
         adapter.insert(new ItemSoloplayCase(1, ""), 0);
@@ -64,30 +65,33 @@ public class SoloPlayActivity extends BaseDrawerActivity implements View.OnClick
     protected String getActionbarTitle() {
         return getString(R.string.solo_play_name);
     }
-    //뒤로가기가 눌렸을때 추가한 경우의 수가 있을경우에만 다이얼로그 띄우고 경우의수가 비었다면 그냥 종료
+    //뒤로가기가 눌렸을때 드로워가 열려있다면 상위 액티비티 호출, 아니면 추가한 경우의 수가 있을경우에만 다이얼로그 띄우고 경우의수가 비었다면 그냥 종료
     @Override
     public void onBackPressed() {
-        if (!caseArrayList.isEmpty()) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setMessage("입력한 경우의 수는 모두 사라집니다. 정말로 닫겠습니까?")
-                    .setCancelable(false)
-                    .setPositiveButton("확인", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            SoloPlayActivity.this.finish();
-                        }
-                    })
-                    .setNegativeButton("취소", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.cancel();
-                        }
-                    });
-            AlertDialog alert = builder.create();
-            alert.show();
+        if (drawerLayout.isDrawerOpen(GravityCompat.START))
+            super.onBackPressed();
+        else {
+            if (!caseArrayList.isEmpty()) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setMessage("입력한 경우의 수는 모두 사라집니다. 정말로 닫겠습니까?")
+                        .setCancelable(false)
+                        .setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                SoloPlayActivity.this.finish();
+                            }
+                        })
+                        .setNegativeButton("취소", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        });
+                AlertDialog alert = builder.create();
+                alert.show();
+            } else
+                SoloPlayActivity.this.finish();
         }
-        else
-            SoloPlayActivity.this.finish();
     }
     private boolean toCaseString(){
         //케이스에 있는 경우의 수를 하나씩 가져와서 스트링에 넣는다. 비어있을 경우 false를 반환하고 제대로 되었다면 add

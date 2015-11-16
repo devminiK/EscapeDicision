@@ -51,7 +51,7 @@ public class AdapterSoloplay extends ArrayAdapter<ItemSoloplayCase> {
         }
         Viewholder holder = null;
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        convertView = inflater.inflate(R.layout.item_case_input, parent, false);
+        convertView = inflater.inflate(R.layout.item_solo_case_input, parent, false);
         holder = new Viewholder();
         holder.itemSoloplayCase = caselist.get(position);
         holder.remove = (ImageButton) convertView.findViewById(R.id.remove_case);
