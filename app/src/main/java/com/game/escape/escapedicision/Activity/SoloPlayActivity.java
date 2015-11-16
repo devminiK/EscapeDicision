@@ -33,11 +33,12 @@ public class SoloPlayActivity extends BaseDrawerActivity implements View.OnClick
         //setContentView(R.layout.activity_solo_play);
         initFromOtherView(R.layout.activity_solo_play);
         initView();
-        //처음에는 경우의 수가 아무것도 없음
-        num_case_textview.setText("1");
+        //처음에는 경우의 수가 2개부터
+        num_case_textview.setText("2");
         caseArrayList = new ArrayList<ItemSoloplayCase>();
         adapter = new AdapterSoloplay(this, R.layout.item_case_input, caseArrayList);
-        //처음에 경우의수가 하나부터 잇을경우. 크기를 1로 시작.
+        //처음에 경우의수가 두개부터 잇을경우. 태그는 거꾸로 만들어줌
+        adapter.insert(new ItemSoloplayCase(2, ""), 0);
         adapter.insert(new ItemSoloplayCase(1, ""), 0);
         case_list.setAdapter(adapter);
     }
@@ -113,8 +114,24 @@ public class SoloPlayActivity extends BaseDrawerActivity implements View.OnClick
                 //리스트가 없을경우, 리스트의 내용이 비었을경우
                 if (!toCaseString()||caseArrayList.isEmpty())
                     Toast.makeText(getApplicationContext(), "경우의 수를 제대로 입력해주세요.", Toast.LENGTH_SHORT).show();
-                else
-                    Toast.makeText(getApplicationContext(), "경우의 수가 제대로 됨", Toast.LENGTH_SHORT).show();
+                //다이얼로그를 띄어 이대로 진행할거냐고 물어봄
+                else {
+                    new AlertDialog.Builder(this)
+                            .setTitle("게임시작")
+                            .setMessage("입력한 경우의 수로 게임을 시작합니다")
+                            .setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // continue with delete
+                                }
+                            })
+                            .setNegativeButton("취소", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.cancel();
+                                }
+                            })
+                            .show();
+                    //Toast.makeText(getApplicationContext(), "경우의 수가 제대로 됨", Toast.LENGTH_SHORT).show();
+                }
                 break;
             case R.id.add_case:
                 //에딧 텍스트 이외의 다른부분을 누를경우 키보드를 닫는다 (베이스드로워 내 setupUI)
