@@ -28,6 +28,7 @@ public abstract class BaseDrawerActivity extends AppCompatActivity {
     protected ActionBarDrawerToggle drawerToggle;
     protected DrawerLayout drawerLayout;
     protected Toolbar toolbar;
+    //private int nowLayout_num;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,12 +76,28 @@ public abstract class BaseDrawerActivity extends AppCompatActivity {
         });
     }
 
+    private void initNowLayout(int id){
+        //현재 레이아웃 아이디를 받아 indicate가 보이도록 바꾼다
+        switch (id){
+            case R.layout.activity_solo_play : //nowLayout_num = 1;
+                break;
+            case R.layout.activity_multiplay : //nowLayout_num = 2;
+                break;
+            case R.layout.activity_memo :
+                findViewById(R.id.indicate_memo).setVisibility(View.VISIBLE);
+                findViewById(R.id.indicate_favorite).setVisibility(View.GONE);
+                break;
+        }
+        //Log.d("id", Integer.toString(nowLayout_num));
+    }
     protected void initFromOtherView(int LayoutId) {
         //눌럿을때의 액티비티를 갖고와서 프레임레이아웃과 인플레이터를 시켜서 뷰에 보여준다.
+        initNowLayout(LayoutId);
         FrameLayout frameLayout = (FrameLayout) findViewById(R.id.drawer_frame);
         View view = LayoutInflater.from(this).inflate(LayoutId, frameLayout, false);
         frameLayout.addView(view);
         //이 클래스를 상속받는 모든 액티비티의 상위 레이아웃에 parent id선언한다
+        //최상위 레이아웃아이디를 넘겨주고 터치한 부분이 edittext가 아니면 키보드를 닫는다
         setupUI(findViewById(R.id.parent));
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_widget);

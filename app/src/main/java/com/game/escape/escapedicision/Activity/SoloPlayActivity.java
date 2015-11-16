@@ -117,11 +117,12 @@ public class SoloPlayActivity extends BaseDrawerActivity implements View.OnClick
                     Toast.makeText(getApplicationContext(), "경우의 수가 제대로 됨", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.add_case:
-                //에딧 텍스트 이외의 포커스를 누를경우 키보드를 닫는다.(어댑터 내 getview)
+                //에딧 텍스트 이외의 다른부분을 누를경우 키보드를 닫는다 (베이스드로워 내 setupUI)
+                //포커스가 되어있을경우 포커스를 클리어 시키고 키보드를 닫는다(어댑터 내 getview)
                 adapter.insert(new ItemSoloplayCase(""), 0);
                 //경우의 수 순서 태그는 추가 버튼을 누를때마다 순서대로 갱신
                 adapter.changeOrderTag();
-                //num_case_textview.setText(Integer.toString(caseArrayList.size()));
+                num_case_textview.setText(Integer.toString(caseArrayList.size()));
                 adapter.notifyDataSetChanged();
                 break;
         }

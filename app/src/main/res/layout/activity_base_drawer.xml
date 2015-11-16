@@ -101,6 +101,15 @@
                 android:layout_marginTop="3dp"
                 android:layout_marginRight="12dp"
                 android:src="@mipmap/ic_navi_favorite"/>
+            <View
+                android:id="@+id/indicate_favorite"
+                android:layout_width="6dp"
+                android:layout_height="6dp"
+                android:layout_toRightOf="@id/bar_favorite"
+                android:layout_marginLeft="16dp"
+                android:layout_centerVertical="true"
+                android:background="@drawable/bg_indicate_now_layout"
+                android:visibility="gone"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -136,6 +145,15 @@
                 android:layout_marginTop="3dp"
                 android:layout_marginRight="15dp"
                 android:src="@mipmap/ic_navi_memo"/>
+            <View
+                android:id="@+id/indicate_memo"
+                android:layout_width="6dp"
+                android:layout_height="6dp"
+                android:layout_toRightOf="@id/bar_memo"
+                android:layout_marginLeft="16dp"
+                android:layout_centerVertical="true"
+                android:background="@drawable/bg_indicate_now_layout"
+                android:visibility="gone"/>
         </RelativeLayout>
 
         <RelativeLayout
