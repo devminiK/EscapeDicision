@@ -37,7 +37,11 @@
             android:theme="@style/lightTheme">
         </activity>
         -->
-        <activity android:name=".Activity.MemoWriteActivity" >
+        <activity
+            android:name=".Activity.MemoWriteActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/lightTheme"
+            android:windowSoftInputMode="adjustPan">
         </activity>
     </application>
 

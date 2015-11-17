@@ -48,7 +48,8 @@
                     android:paddingBottom="12dp"
                     android:paddingLeft="12dp"
                     android:paddingRight="12dp"
-                    android:paddingTop="8dp">
+                    android:paddingTop="8dp"
+                    >
 
                     <RelativeLayout
                         android:id="@+id/title_part"
@@ -57,8 +58,19 @@
                         android:layout_alignParentStart="true"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentEnd="true"
-                        android:layout_alignParentRight="true">
+                        android:layout_alignParentRight="true"
+                        android:orientation="horizontal"
+                        >
 
+                        <TextView
+                            android:id="@+id/tag_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:text="제목 : "
+                            android:textColor="#434343"
+                            android:textSize="13sp" />
+<!-- 날짜열
                         <TextView
                             android:id="@+id/tag_date"
                             android:layout_width="wrap_content"
@@ -67,17 +79,19 @@
                             android:layout_alignParentRight="true"
                             android:layout_alignParentEnd="true"
                             android:text="2014.11.16"
+                            android:textColor="#434343"
                             android:textSize="13sp" />
-
+-->
                         <EditText
                             android:id="@+id/input_title"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_alignBaseline="@id/tag_date"
+                            android:layout_alignBaseline="@id/tag_title"
                             android:layout_marginRight="3dp"
-                            android:layout_toLeftOf="@id/tag_date"
-                            android:layout_toStartOf="@id/tag_date"
+                            android:layout_toEndOf="@id/tag_title"
+                            android:layout_toRightOf="@id/tag_title"
                             android:singleLine="true"
+                            android:textColor="#434343"
                             android:textSize="15sp" />
                     </RelativeLayout>
 
@@ -86,6 +100,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_below="@id/title_part"
+                        android:textColor="#434343"
                         android:textSize="15sp" />
                 </RelativeLayout>
             </ScrollView>
