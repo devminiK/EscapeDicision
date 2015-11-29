@@ -28,7 +28,6 @@ public abstract class BaseDrawerActivity extends AppCompatActivity {
     protected ActionBarDrawerToggle drawerToggle;
     protected DrawerLayout drawerLayout;
     protected Toolbar toolbar;
-    //private int nowLayout_num;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,13 +78,17 @@ public abstract class BaseDrawerActivity extends AppCompatActivity {
     private void initNowLayout(int id){
         //현재 레이아웃 아이디를 받아 indicate가 보이도록 바꾼다
         switch (id){
-            case R.layout.activity_solo_play : //nowLayout_num = 1;
+            case R.layout.activity_solo_play :
+                findViewById(R.id.indicate_solo).setVisibility(View.VISIBLE);
+                findViewById(R.id.ic_solo_go).setVisibility(View.GONE);
                 break;
-            case R.layout.activity_multiplay : //nowLayout_num = 2;
+            case R.layout.activity_multiplay :
+                findViewById(R.id.indicate_multi).setVisibility(View.VISIBLE);
+                findViewById(R.id.ic_multi_go).setVisibility(View.GONE);
                 break;
             case R.layout.activity_memo :
                 findViewById(R.id.indicate_memo).setVisibility(View.VISIBLE);
-                findViewById(R.id.indicate_favorite).setVisibility(View.GONE);
+                findViewById(R.id.ic_memo_go).setVisibility(View.GONE);
                 break;
         }
         //Log.d("id", Integer.toString(nowLayout_num));
