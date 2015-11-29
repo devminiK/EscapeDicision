@@ -1,6 +1,5 @@
 package com.game.escape.escapedicision.Activity;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -66,9 +65,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         });
         AlertDialog alert = builder.create();
         alert.show();
-    }
-    public Context getContext(){
-        return this;
     }
     @Override
     public void onClick(View v) {
