@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:paddingTop="10dp"
     android:gravity="center_vertical"
     android:focusable="true"
     android:id="@+id/item_case"
@@ -15,25 +14,42 @@
         android:background="@drawable/bg_order_case"
         android:layout_width="32dp"
         android:gravity="center"
-        android:layout_height="32dp" />
+        android:layout_height="32dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
     <ImageButton
-        android:id="@+id/remove_case"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
+        android:id="@+id/remove"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@mipmap/ic_remove_case"
         android:onClick="removeCase"
         android:paddingLeft="8dp"
         android:paddingRight="12dp"
-        android:background="@android:color/transparent"/>
+        android:background="@android:color/transparent"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
     <EditText
-        android:id="@+id/input_case"
+        android:id="@+id/input_case_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="6dp"
         android:layout_toRightOf="@id/order_num"
-        android:layout_toLeftOf="@id/remove_case"
+        android:layout_toLeftOf="@id/remove"
+        android:singleLine="true"
+        android:textSize="17sp"
+        android:textColor="#3d3d3d"
+        android:hint="경우를 입력해주세요."
+        android:textColorHint="#a3a3a3"
+        android:theme="@style/CaseEditTextTheme"/>
+    <EditText
+        android:id="@+id/input_case_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/input_case_1"
+        android:layout_alignLeft="@id/input_case_1"
+        android:layout_alignRight="@id/input_case_1"
         android:singleLine="true"
         android:textSize="17sp"
         android:textColor="#3d3d3d"

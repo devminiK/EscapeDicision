@@ -283,8 +283,8 @@
                         android:src="@mipmap/ic_navi_go"/>
                     <View
                         android:id="@+id/indicate_solo"
-                        android:layout_width="6dp"
-                        android:layout_height="6dp"
+                        android:layout_width="8dp"
+                        android:layout_height="8dp"
                         android:layout_centerVertical="true"
                         android:layout_gravity="center_vertical"
                         android:background="@drawable/bg_indicate_now_layout"
@@ -342,8 +342,8 @@
                         android:src="@mipmap/ic_navi_go"/>
                     <View
                         android:id="@+id/indicate_multi"
-                        android:layout_width="6dp"
-                        android:layout_height="6dp"
+                        android:layout_width="8dp"
+                        android:layout_height="8dp"
                         android:layout_centerVertical="true"
                         android:layout_gravity="center_vertical"
                         android:background="@drawable/bg_indicate_now_layout"
@@ -401,8 +401,8 @@
                         android:src="@mipmap/ic_navi_go"/>
                     <View
                         android:id="@+id/indicate_favorite"
-                        android:layout_width="6dp"
-                        android:layout_height="6dp"
+                        android:layout_width="8dp"
+                        android:layout_height="8dp"
                         android:layout_centerVertical="true"
                         android:layout_gravity="center_vertical"
                         android:background="@drawable/bg_indicate_now_layout"
@@ -460,8 +460,8 @@
                         android:src="@mipmap/ic_navi_go"/>
                     <View
                         android:id="@+id/indicate_memo"
-                        android:layout_width="6dp"
-                        android:layout_height="6dp"
+                        android:layout_width="8dp"
+                        android:layout_height="8dp"
                         android:layout_centerVertical="true"
                         android:layout_gravity="center_vertical"
                         android:background="@drawable/bg_indicate_now_layout"

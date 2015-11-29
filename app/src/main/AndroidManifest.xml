@@ -30,7 +30,8 @@
         <activity
             android:name=".Activity.MultiplayActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/lightTheme" >
+            android:theme="@style/lightTheme"
+            android:windowSoftInputMode="adjustPan">
         </activity>
         <!--
         <activity android:name=".CustomBase.BaseDrawerActivity"

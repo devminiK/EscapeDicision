@@ -10,6 +10,15 @@ public class ItemMultiplayCase implements Serializable{
     private int order;
     private String input_1, input_2;
 
+    public ItemMultiplayCase(String input_1, String input_2){
+        this.input_1 = input_1;
+        this.input_2 = input_2;
+    }
+    public ItemMultiplayCase(int order,  String input_1, String input_2) {
+        this.order = order;
+        this.input_1 = input_1;
+        this.input_2 = input_2;
+    }
     public void setOrder(int order){
         this.order = order;
     }
