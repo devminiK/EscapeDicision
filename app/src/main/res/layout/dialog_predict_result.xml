@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/predict_dialog_root"
+    android:layout_gravity="center"
+    android:orientation="vertical" android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_custom_dialog"
+    android:minWidth="356dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="결과 예측"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginTop="8dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/predict_help"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/colorCase"/>
+    <Spinner
+        android:id="@+id/case_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"></Spinner>
+    <Spinner
+        android:id="@+id/name_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"></Spinner>
+
+    <RelativeLayout
+        android:layout_marginTop="18dp"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:layout_gravity="bottom"
+        android:gravity="center">
+        <View
+            android:id="@+id/above_bar"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentTop="true"
+            android:background="@color/colorPrimary"/>
+        <View
+            android:id="@+id/center_bar"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:background="@color/colorPrimary"/>
+
+        <TextView
+            android:id="@+id/cancel_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/above_bar"
+            android:text="취소"
+            android:gravity="center"
+            android:textColor="@color/colorDark"
+            android:layout_centerInParent="true"
+            android:layout_toLeftOf="@id/center_bar"
+            android:textSize="16sp"/>
+        <TextView
+            android:id="@+id/okay_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/above_bar"
+            android:text="확인"
+            android:textColor="@color/colorDark"
+            android:gravity="center"
+            android:layout_centerInParent="true"
+            android:layout_toRightOf="@id/center_bar"
+            android:textSize="16sp"/>
+    </RelativeLayout>
+</LinearLayout>

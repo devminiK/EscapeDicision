@@ -1,15 +1,19 @@
 package com.game.escape.escapedicision.Activity;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,9 +28,10 @@ public class MultiplayActivity extends BaseDrawerActivity implements View.OnClic
     private ListView case_list;
     private RelativeLayout add_case;
     private TextView num_case_textview;
-    private Button start_button;
+    private Button start_button, predict_button;
     ArrayList<ItemMultiplayCase> caseArrayList;
     AdapterMultiplay adapter;
+    private Dialog predict_dialog;
     ArrayList<String> stringCaselist_1;
     ArrayList<String> stringCaselist_2;
     //어댑터 구현할 것.
@@ -51,6 +56,8 @@ public class MultiplayActivity extends BaseDrawerActivity implements View.OnClic
         num_case_textview = (TextView)findViewById(R.id.num_case_double);
         start_button = (Button)findViewById(R.id.game_start_double);
         start_button.setOnClickListener(this);
+        predict_button = (Button)findViewById(R.id.predict_result);
+        predict_button.setOnClickListener(this);
         case_list = (ListView)findViewById(R.id.case_double_list);
         //리스트뷰에서 포커스를 잃지 않도록 한다.
         case_list.setDescendantFocusability(ViewGroup.FOCUS_AFTER_DESCENDANTS);
@@ -118,6 +125,44 @@ public class MultiplayActivity extends BaseDrawerActivity implements View.OnClic
                 MultiplayActivity.this.finish();
         }
     }
+    private AlertDialog createPredictDialog(){
+        LayoutInflater inflater=getLayoutInflater();
+        final View dialogView= inflater.inflate(R.layout.dialog_predict_result, null);
+        final AlertDialog.Builder buider= new AlertDialog.Builder(this);
+        buider.setView(dialogView);
+
+        //스피너 (선택된 텍스트 item_predict_spinner.xml, 드롭다운 iem_dropdown_spinner.xml
+        Spinner case_spinner = (Spinner) dialogView.findViewById(R.id.case_spinner);
+        Spinner name_spinner = (Spinner) dialogView.findViewById(R.id.name_spinner);
+        ArrayAdapter case_adapter = new ArrayAdapter(this, R.layout.item_predict_spinner, stringCaselist_1);
+        ArrayAdapter name_adpater = new ArrayAdapter(this, R.layout.item_predict_spinner, stringCaselist_2);
+        case_adapter.setDropDownViewResource(R.layout.item_dropdown_spinner);
+        name_adpater.setDropDownViewResource(R.layout.item_dropdown_spinner);
+        case_spinner.setAdapter(case_adapter);
+        name_spinner.setAdapter(name_adpater);
+
+        dialogView.findViewById(R.id.cancel_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                predict_dialog.dismiss();
+            }
+        });
+        dialogView.findViewById(R.id.okay_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //확인버튼, 스피너에서 선택된 아이템을 받아오도록 할것
+                Toast.makeText(getApplicationContext(), "확인버튼 클릭", Toast.LENGTH_SHORT).show();
+                predict_dialog.dismiss();
+            }
+        });
+
+        return buider.create();
+    }
+/*
+    private void setDismiss(Dialog dialog){
+        if(dialog!=null&&dialog.isShowing())
+            dialog.dismiss();
+    }*/
 
     @Override
     public void onClick(View v) {
@@ -146,6 +191,14 @@ public class MultiplayActivity extends BaseDrawerActivity implements View.OnClic
                             .show();
                     //Toast.makeText(getApplicationContext(), "경우의 수가 제대로 됨", Toast.LENGTH_SHORT).show();
                 }
+                break;
+            case R.id.predict_result :
+                if (toCaseString()&&!caseArrayList.isEmpty()) {
+                    predict_dialog = createPredictDialog();
+                    predict_dialog.show();
+                }
+                else
+                    Toast.makeText(getApplicationContext(), "경우의 수를 제대로 입력하고 실행해주세요.", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.add_case_double :
                 adapter.insert(new ItemMultiplayCase("", ""), 0);
