@@ -92,7 +92,7 @@
             android:background="@drawable/bg_button"/>
         <ListView
             android:id="@+id/case_list"
-            tools:listitem="@layout/item_case_input"
+            tools:listitem="@layout/item_solo_case_input"
             android:layout_below="@id/case_list_title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

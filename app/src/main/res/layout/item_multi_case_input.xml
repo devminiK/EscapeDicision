@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:gravity="center_vertical"
+    android:paddingTop="10dp"
     android:focusable="true"
     android:id="@+id/item_case"
     android:focusableInTouchMode="true"
@@ -30,30 +31,39 @@
         android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+    <View
+        android:id="@+id/center_circle"
+        android:layout_width="4dp"
+        android:layout_height="4dp"
+        android:background="@drawable/bg_indicate_now_layout"
+        android:layout_centerInParent="true"/>
     <EditText
+        android:layout_marginRight="3dp"
         android:id="@+id/input_case_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="6dp"
+        android:layout_marginLeft="4dp"
         android:layout_toRightOf="@id/order_num"
-        android:layout_toLeftOf="@id/remove"
+        android:layout_toLeftOf="@id/center_circle"
         android:singleLine="true"
         android:textSize="17sp"
         android:textColor="#3d3d3d"
         android:hint="경우를 입력해주세요."
         android:textColorHint="#a3a3a3"
+        android:layout_centerVertical="true"
         android:theme="@style/CaseEditTextTheme"/>
     <EditText
+        android:layout_marginLeft="3dp"
         android:id="@+id/input_case_2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/input_case_1"
-        android:layout_alignLeft="@id/input_case_1"
-        android:layout_alignRight="@id/input_case_1"
+        android:layout_toLeftOf="@id/remove"
+        android:layout_toRightOf="@id/center_circle"
         android:singleLine="true"
         android:textSize="17sp"
         android:textColor="#3d3d3d"
-        android:hint="경우를 입력해주세요."
+        android:layout_centerVertical="true"
+        android:hint="이름을 입력해주세요."
         android:textColorHint="#a3a3a3"
         android:theme="@style/CaseEditTextTheme"/>
 </RelativeLayout>

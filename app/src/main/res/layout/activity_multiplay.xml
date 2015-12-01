@@ -123,7 +123,7 @@
             android:layout_height="match_parent"
             android:layout_above="@id/below_button"
             android:layout_below="@id/double_case_list_title"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="2dp"
             android:descendantFocusability="afterDescendants"
             android:divider="@android:color/transparent"
             android:dividerHeight="0dp"

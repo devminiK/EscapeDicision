@@ -6,5 +6,6 @@
     android:ellipsize="marquee"
     android:textColor="@color/colorCase"
     android:textSize="16sp"
+    android:padding="12dp"
     android:background="@color/colorBackgroundLight" >
 </CheckedTextView>

@@ -128,7 +128,7 @@ public class MultiplayActivity extends BaseDrawerActivity implements View.OnClic
     private AlertDialog createPredictDialog(){
         LayoutInflater inflater=getLayoutInflater();
         final View dialogView= inflater.inflate(R.layout.dialog_predict_result, null);
-        final AlertDialog.Builder buider= new AlertDialog.Builder(this);
+        final AlertDialog.Builder buider= new AlertDialog.Builder(this, android.app.AlertDialog.THEME_HOLO_LIGHT);
         buider.setView(dialogView);
 
         //스피너 (선택된 텍스트 item_predict_spinner.xml, 드롭다운 iem_dropdown_spinner.xml

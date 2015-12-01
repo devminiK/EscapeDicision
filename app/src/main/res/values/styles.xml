@@ -9,7 +9,7 @@
     <style name="darkTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimaryDark">#343c40</item>
     </style>
-    <style name="lightTheme" parent="Theme.AppCompat.NoActionBar">
+    <style name="lightTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="toolbarStyle">@style/ToolBarStyle</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
