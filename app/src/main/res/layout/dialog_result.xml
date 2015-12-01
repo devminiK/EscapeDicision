@@ -12,37 +12,38 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="결과 예측"
+        android:text="게임 결과"
         android:textColor="@color/colorPrimary"
         android:textSize="20sp"
         android:textStyle="bold"
         android:layout_marginTop="10dp"/>
+
+    <ImageView
+        android:id="@+id/random_game_image"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="112dp"
+        android:layout_height="112dp"
+        android:layout_marginTop="20dp"/>
+
     <TextView
+        android:id="@+id/selected_result_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="17sp"
+        android:text="치킨이 선택되었습니다"
         android:layout_gravity="center_horizontal"
-        android:text="@string/predict_help"
-        android:layout_marginTop="8dp"
-        android:textColor="@color/colorCase"/>
-    <Spinner
-        android:id="@+id/case_spinner"
-        android:layout_width="match_parent"
+        android:layout_marginTop="16dp"/>
+    <TextView
+        android:id="@+id/predict_text"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"></Spinner>
-    <Spinner
-        android:id="@+id/name_spinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"></Spinner>
+        android:text="예측한 결과가 맞습니다"
+        android:textSize="15sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"/>
 
     <RelativeLayout
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="16dp"
         android:layout_width="match_parent"
         android:layout_height="44dp"
         android:layout_gravity="bottom"
@@ -61,25 +62,25 @@
             android:background="@color/colorPrimary"/>
 
         <TextView
-            android:id="@+id/cancel_button"
+            android:id="@+id/favorite_save_button"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/above_bar"
-            android:text="취소"
+            android:text="즐겨찾기 저장"
             android:gravity="center"
-            android:textStyle="bold"
             android:textColor="@color/colorDark"
             android:layout_centerInParent="true"
+            android:textStyle="bold"
             android:layout_toLeftOf="@id/center_bar"
             android:textSize="17sp"/>
         <TextView
-            android:id="@+id/okay_button"
+            android:id="@+id/home_button"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/above_bar"
-            android:text="확인"
-            android:textColor="@color/colorDark"
+            android:text="홈으로"
             android:textStyle="bold"
+            android:textColor="@color/colorDark"
             android:gravity="center"
             android:layout_centerInParent="true"
             android:layout_toRightOf="@id/center_bar"
