@@ -4,8 +4,8 @@
         <shape android:shape="rectangle">
             <stroke
                 android:width="3dp"
-                android:color="#607d8b" />
-            <solid android:color="#90a4ae" />
+                android:color="#96250d" />
+            <solid android:color="#f25e5e" />
             <corners android:radius="4dp" />
         </shape>
     </item>
