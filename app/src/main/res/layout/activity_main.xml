@@ -4,16 +4,15 @@
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:orientation="vertical"
-    android:background="@color/colorBackgroundDark"
+    android:background="@color/colorBackgroudivory"
     android:gravity="center_horizontal" tools:context=".MainActivity">
 
     <ImageView
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
-        android:layout_height="170"
+        android:layout_height="160dp"
         android:scaleType="fitCenter"
         android:src="@mipmap/img_main_logo"/>
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,8 +23,9 @@
             android:id="@+id/button_soloplay"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:scaleType="fitXY"
             android:src="@mipmap/img_n_solo_play"
             android:background="@android:color/transparent"/>
         <ImageButton
@@ -33,46 +33,48 @@
             android:layout_alignBaseline="@id/button_soloplay"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:scaleType="fitXY"
             android:src="@mipmap/img_n_multi_play"
             android:background="@android:color/transparent"/>
     </RelativeLayout>
     <Button
         android:id="@+id/favorite"
-        android:layout_width="210dp"
-        android:layout_height="wrap_content"
-        android:padding="4dp"
+        android:layout_width="230dp"
+        android:layout_height="50"
+        android:padding="10dp"
         android:layout_marginTop="22dp"
         android:text="@string/favorite_name"
         android:textSize="18sp"
-        android:textColor="#ffffff"
+        android:textColor="@color/colorWhite"
         android:textStyle="bold"
-        android:background="@drawable/bg_button"
-        android:drawableLeft="@drawable/ic_navi_favorite"/>
+        android:background="@drawable/bg_main_button"
+        android:drawableLeft="@drawable/ic_star"
+        />
     <Button
         android:id="@+id/memo"
-        android:layout_width="210dp"
-        android:layout_height="wrap_content"
-        android:padding="4dp"
+        android:layout_width="230dp"
+        android:layout_height="50"
+        android:padding="10dp"
         android:layout_marginTop="16dp"
         android:text="@string/memo_name"
         android:textSize="18sp"
-        android:textColor="#ffffff"
+        android:textColor="@color/colorWhite"
         android:textStyle="bold"
-        android:background="@drawable/bg_button"
-        android:drawableLeft="@drawable/ic_navi_memo"
+        android:background="@drawable/bg_main_button"
+        android:drawableLeft="@drawable/ic_memo"
         />
     <Button
         android:id="@+id/quit"
-        android:layout_width="210dp"
-        android:layout_height="wrap_content"
-        android:padding="4dp"
+        android:layout_width="230dp"
+        android:layout_height="50"
+        android:padding="10dp"
         android:layout_marginTop="16dp"
-        android:text="게임종료"
+        android:text="@string/exit_name"
         android:textSize="18sp"
-        android:textColor="#ffffff"
+        android:textColor="@color/colorWhite"
         android:textStyle="bold"
-        android:background="@drawable/bg_button"
-        android:drawableLeft="@drawable/ic_navi_quit"/>
+        android:background="@drawable/bg_main_button"
+        android:drawableLeft="@drawable/ic_exit"/>
 </LinearLayout>
