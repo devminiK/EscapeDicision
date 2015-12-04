@@ -44,6 +44,9 @@
             android:theme="@style/lightTheme"
             android:windowSoftInputMode="adjustPan">
         </activity>
+        <activity android:name=".Activity.FavoriteActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/lightTheme">
+        </activity>
     </application>
-
 </manifest>

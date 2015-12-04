@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import com.game.escape.escapedicision.CustomBase.BackKeypressed;
 import com.game.escape.escapedicision.R;
@@ -17,7 +16,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private BackKeypressed backpressed;
     private ImageButton soloplay, multiplay;
     private Button favorite, memo, quit;
-    private Toast tempToast;
     //각 버튼에 인텐트 전달할 것.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +35,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         favorite.setOnClickListener(this);
         memo.setOnClickListener(this);
         quit.setOnClickListener(this);
-        tempToast = Toast.makeText(getApplicationContext(), "아직 안만듬", Toast.LENGTH_SHORT);
     }
     @Override
     public void onBackPressed() {
@@ -73,8 +70,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.button_multiplay : startnewActivity(new Intent(this, MultiplayActivity.class));
                 break;
-            case R.id.favorite : //startnewActivity();
-                tempToast.show();
+            case R.id.favorite :
+                startnewActivity(new Intent(this, FavoriteActivity.class));
                 break;
             case R.id.memo : startnewActivity(new Intent(this, MemoActivity.class));
                 break;

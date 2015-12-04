@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:paddingTop="10dp"
+    android:gravity="center_vertical"
+    android:focusable="true"
+    android:id="@+id/item_favorite"
+    android:focusableInTouchMode="true"
+    android:layout_height="wrap_content">
+    <ImageButton
+        android:id="@+id/remove_favorite"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_remove_case"
+        android:paddingTop="4dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="12dp"
+        android:background="@android:color/transparent"/>
+
+    <TextView
+        android:id="@+id/text_favorite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="6dp"
+        android:layout_toLeftOf="@id/remove_favorite"
+        android:text="경우의수 : "
+        android:textColor="#434343"
+        android:padding="10dp"
+        android:layout_marginRight="12dp"
+        android:background="@drawable/bg_text_window" />
+</RelativeLayout>

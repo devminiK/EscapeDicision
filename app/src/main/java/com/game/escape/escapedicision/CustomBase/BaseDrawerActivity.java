@@ -19,6 +19,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 
+import com.game.escape.escapedicision.Activity.FavoriteActivity;
 import com.game.escape.escapedicision.Activity.MemoActivity;
 import com.game.escape.escapedicision.Activity.MultiplayActivity;
 import com.game.escape.escapedicision.Activity.SoloPlayActivity;
@@ -58,7 +59,7 @@ public abstract class BaseDrawerActivity extends AppCompatActivity {
         findViewById(R.id.button_favorite).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //startNewActivity(new Intent(getApplicationContext(), SoloPlayActivity.class));
+                startNewActivity(new Intent(getApplicationContext(), FavoriteActivity.class));
             }
         });
         findViewById(R.id.button_memo).setOnClickListener(new View.OnClickListener() {
@@ -89,6 +90,10 @@ public abstract class BaseDrawerActivity extends AppCompatActivity {
             case R.layout.activity_memo :
                 findViewById(R.id.indicate_memo).setVisibility(View.VISIBLE);
                 findViewById(R.id.ic_memo_go).setVisibility(View.GONE);
+                break;
+            case R.layout.activity_favorite :
+                findViewById(R.id.indicate_favorite).setVisibility(View.VISIBLE);
+                findViewById(R.id.ic_favorite_go).setVisibility(View.GONE);
                 break;
         }
         //Log.d("id", Integer.toString(nowLayout_num));
