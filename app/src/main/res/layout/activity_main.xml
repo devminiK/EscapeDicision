@@ -23,8 +23,8 @@
             android:id="@+id/button_soloplay"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
             android:scaleType="fitXY"
             android:src="@mipmap/img_n_solo_play"
             android:background="@android:color/transparent"/>
@@ -33,8 +33,8 @@
             android:layout_alignBaseline="@id/button_soloplay"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
             android:scaleType="fitXY"
             android:src="@mipmap/img_n_multi_play"
             android:background="@android:color/transparent"/>
@@ -50,7 +50,8 @@
         android:textColor="@color/colorWhite"
         android:textStyle="bold"
         android:background="@drawable/bg_main_button"
-        android:drawableLeft="@drawable/ic_star_smaller"
+        android:drawableLeft="@drawable/ic_star_final"
+
         />
     <Button
         android:id="@+id/memo"
@@ -63,7 +64,7 @@
         android:textColor="@color/colorWhite"
         android:textStyle="bold"
         android:background="@drawable/bg_main_button"
-        android:drawableLeft="@drawable/ic_memo_smaller"
+        android:drawableLeft="@drawable/ic_memo_final"
         />
     <Button
         android:id="@+id/quit"
@@ -76,5 +77,5 @@
         android:textColor="@color/colorWhite"
         android:textStyle="bold"
         android:background="@drawable/bg_main_button"
-        android:drawableLeft="@drawable/ic_exit_smaller"/>
+        android:drawableLeft="@drawable/ic_exit_final"/>
 </LinearLayout>
