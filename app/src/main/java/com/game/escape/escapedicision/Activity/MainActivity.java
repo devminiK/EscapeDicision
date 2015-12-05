@@ -25,9 +25,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void initview(){
         soloplay = (ImageButton)findViewById(R.id.button_soloplay);
         multiplay = (ImageButton)findViewById(R.id.button_multiplay);
-        favorite = (ImageButton)findViewById(R.id.favorite);
-        memo = (ImageButton)findViewById(R.id.memo);
-        quit = (ImageButton)findViewById(R.id.quit);
+        favorite = (ImageButton)findViewById(R.id.button_favorite);
+        memo = (ImageButton)findViewById(R.id.button_memo);
+        quit = (ImageButton)findViewById(R.id.button_quit);
         soloplay.setOnClickListener(this);
         multiplay.setOnClickListener(this);
         favorite.setOnClickListener(this);
@@ -68,12 +68,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.button_multiplay : startnewActivity(new Intent(this, MultiplayActivity.class));
                 break;
-            case R.id.favorite :
+            case R.id.button_favorite :
                 startnewActivity(new Intent(this, FavoriteActivity.class));
                 break;
-            case R.id.memo : startnewActivity(new Intent(this, MemoActivity.class));
+            case R.id.button_memo : startnewActivity(new Intent(this, MemoActivity.class));
                 break;
-            case R.id.quit : finishDialog();
+            case R.id.button_quit : finishDialog();
         }
     }
 }

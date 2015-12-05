@@ -33,10 +33,9 @@ public class FavoriteActivity extends BaseDrawerActivity {
         initFromOtherView(R.layout.activity_favorite);
         favorite_listview = (ListView)findViewById(R.id.favorite_list);
         //리스트를 어떻게 불러올것인가
-        //favoriteLists = dbHelper.getFavList();
-        //favorite_listview.setAdapter(new AdapterFavorite());
-
         dbHelper = new FavoriteDBHelper(this);
+        favoriteLists = dbHelper.getFavList();
+        favorite_listview.setAdapter(new AdapterFavorite());
     }
 
     @Override

@@ -20,13 +20,9 @@ public abstract class BaseActivity extends AppCompatActivity{
             setSupportActionBar(toolbar);
             getSupportActionBar().setTitle(getActionbarTitle());
             toolbar.setNavigationIcon(R.mipmap.ic_back);
-            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    finish();
-                }
-            });
+            toolbar.setNavigationOnClickListener(backClicked());
         }
     }
     protected abstract String getActionbarTitle();
+    protected abstract View.OnClickListener backClicked();
 }
