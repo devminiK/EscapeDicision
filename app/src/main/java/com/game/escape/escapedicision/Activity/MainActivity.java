@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.game.escape.escapedicision.CustomBase.BackKeypressed;
@@ -14,8 +13,7 @@ import com.game.escape.escapedicision.R;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     private BackKeypressed backpressed;
-    private ImageButton soloplay, multiplay;
-    private Button favorite, memo, quit;
+    private ImageButton soloplay, multiplay,favorite, memo, quit;
     //각 버튼에 인텐트 전달할 것.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,9 +25,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void initview(){
         soloplay = (ImageButton)findViewById(R.id.button_soloplay);
         multiplay = (ImageButton)findViewById(R.id.button_multiplay);
-        favorite = (Button)findViewById(R.id.favorite);
-        memo = (Button)findViewById(R.id.memo);
-        quit = (Button)findViewById(R.id.quit);
+        favorite = (ImageButton)findViewById(R.id.favorite);
+        memo = (ImageButton)findViewById(R.id.memo);
+        quit = (ImageButton)findViewById(R.id.quit);
         soloplay.setOnClickListener(this);
         multiplay.setOnClickListener(this);
         favorite.setOnClickListener(this);

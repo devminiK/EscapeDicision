@@ -39,42 +39,35 @@
             android:src="@mipmap/img_n_multi_play"
             android:background="@android:color/transparent"/>
     </RelativeLayout>
-    <Button
+    <ImageButton
         android:id="@+id/favorite"
-        android:layout_width="230dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="25dp"
+        android:padding="6dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="4dp"
-        android:layout_marginTop="26dp"
-        android:text="@string/favorite_name"
-        android:textSize="18sp"
-        android:textColor="@color/colorWhite"
-        android:textStyle="bold"
-        android:background="@drawable/bg_main_button"
-        android:drawableLeft="@drawable/ic_star_final"
-        />
-    <Button
-        android:id="@+id/memo"
-        android:layout_width="230dp"
+        android:scaleType="fitXY"
+        android:src="@mipmap/img_main_favorite"
+        android:background="@android:color/transparent"/>
+    <ImageButton
+        android:id="@+id/meno"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:padding="6dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="4dp"
-        android:layout_marginTop="10dp"
-        android:text="@string/memo_name"
-        android:textSize="18sp"
-        android:textColor="@color/colorWhite"
-        android:textStyle="bold"
-        android:background="@drawable/bg_main_button"
-        android:drawableLeft="@drawable/ic_memo_final"
-        />
-    <Button
+        android:scaleType="fitXY"
+        android:src="@mipmap/img_main_memo"
+        android:background="@android:color/transparent"/>
+    <ImageButton
         android:id="@+id/quit"
-        android:layout_width="230dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:padding="6dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="4dp"
-        android:layout_marginTop="10dp"
-        android:text="@string/exit_name"
-        android:textSize="18sp"
-        android:textColor="@color/colorWhite"
-        android:textStyle="bold"
-        android:background="@drawable/bg_main_button"
-        android:drawableLeft="@drawable/ic_exit_final"/>
+        android:scaleType="fitXY"
+        android:src="@mipmap/img_main_exit"
+        android:background="@android:color/transparent"/>
 </LinearLayout>
