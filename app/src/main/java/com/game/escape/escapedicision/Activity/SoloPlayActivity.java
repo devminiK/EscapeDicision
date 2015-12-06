@@ -38,6 +38,7 @@ public class SoloPlayActivity extends BaseDrawerActivity implements View.OnClick
         initFromOtherView(R.layout.activity_solo_play);
         initView();
         //처음에는 경우의 수가 2개부터
+        MultiplayActivity.isPredict = false;
         num_case_textview.setText("2");
         caseArrayList = new ArrayList<ItemSoloplayCase>();
         adapter = new AdapterSoloplay(this, R.layout.item_solo_case_input, caseArrayList);

@@ -16,9 +16,9 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="22dp"
+        android:paddingLeft="18dp"
         android:layout_marginTop="26dp"
-        android:paddingRight="22dp">
+        android:paddingRight="18dp">
         <ImageButton
             android:id="@+id/button_soloplay"
             android:layout_alignParentStart="true"

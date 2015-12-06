@@ -50,6 +50,7 @@ public class MultiplayActivity extends BaseDrawerActivity implements View.OnClic
         initFromOtherView(R.layout.activity_multiplay);
         initView();
         //처음 경우의수 2개로
+        isPredict = false;
         num_case_textview.setText("2");
         caseArrayList = new ArrayList<ItemMultiplayCase>();
         adapter = new AdapterMultiplay(this, R.layout.item_multi_case_input, caseArrayList);
@@ -178,6 +179,7 @@ public class MultiplayActivity extends BaseDrawerActivity implements View.OnClic
         dialogView.findViewById(R.id.cancel_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                isPredict = false;
                 predict_string_array = null;
                 predict_dialog.dismiss();
             }
