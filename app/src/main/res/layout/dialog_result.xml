@@ -2,11 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/predict_dialog_root"
     android:layout_gravity="center"
-    android:orientation="vertical" android:layout_width="wrap_content"
+    android:orientation="vertical" android:layout_width="328dp"
     android:layout_height="wrap_content"
-    android:background="@drawable/bg_custom_dialog"
-    android:theme="@android:style/Theme.Holo.Light"
-    android:minWidth="356dp">
+    android:background="@drawable/bg_custom_dialog">
 
     <TextView
         android:layout_width="wrap_content"

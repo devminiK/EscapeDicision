@@ -1,6 +1,7 @@
 package com.game.escape.escapedicision.Activity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.AlertDialog;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 
 import com.game.escape.escapedicision.CustomBase.AdapterSoloplay;
 import com.game.escape.escapedicision.CustomBase.BaseDrawerActivity;
+import com.game.escape.escapedicision.CustomBase.GameAnimationActivity;
 import com.game.escape.escapedicision.CustomBase.ItemSoloplayCase;
 import com.game.escape.escapedicision.R;
 
@@ -24,10 +26,11 @@ public class SoloPlayActivity extends BaseDrawerActivity implements View.OnClick
     private RelativeLayout add_case;
     private TextView num_case_textview;
     private Button start_button;
-    ArrayList<ItemSoloplayCase> caseArrayList;
-    ArrayList<String> stringCaselist;
-    AdapterSoloplay adapter;
-
+    private ArrayList<ItemSoloplayCase> caseArrayList;
+    private ArrayList<String> stringCaselist;
+    private AdapterSoloplay adapter;
+    public static final String FORWARD_CASELIST = "CASE_LIST";
+    public static final String FORWARD_ACTIVITY_NUM = "ACTIVITY_NUM";
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -125,7 +128,10 @@ public class SoloPlayActivity extends BaseDrawerActivity implements View.OnClick
                             .setMessage("입력한 경우의 수로 게임을 시작합니다")
                             .setPositiveButton("확인", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
-                                    // continue with delete
+                                    Intent intent = new Intent(SoloPlayActivity.this, GameAnimationActivity.class);
+                                    intent.putExtra(FORWARD_ACTIVITY_NUM, 1);
+                                    intent.putExtra(FORWARD_CASELIST, stringCaselist);
+                                    startActivity(intent);
                                 }
                             })
                             .setNegativeButton("취소", new DialogInterface.OnClickListener() {

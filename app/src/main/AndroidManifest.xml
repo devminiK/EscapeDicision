@@ -48,5 +48,9 @@
             android:screenOrientation="portrait"
             android:theme="@style/lightTheme">
         </activity>
+        <activity android:name=".CustomBase.GameAnimationActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/darkTheme">
+        </activity>
     </application>
 </manifest>

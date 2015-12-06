@@ -2,6 +2,7 @@ package com.game.escape.escapedicision.Activity;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.AlertDialog;
@@ -20,6 +21,7 @@ import android.widget.Toast;
 
 import com.game.escape.escapedicision.CustomBase.AdapterMultiplay;
 import com.game.escape.escapedicision.CustomBase.BaseDrawerActivity;
+import com.game.escape.escapedicision.CustomBase.GameAnimationActivity;
 import com.game.escape.escapedicision.CustomBase.ItemMultiplayCase;
 import com.game.escape.escapedicision.R;
 
@@ -30,16 +32,17 @@ public class MultiplayActivity extends BaseDrawerActivity implements View.OnClic
     private RelativeLayout add_case;
     private TextView num_case_textview;
     private Button start_button, predict_button;
-    ArrayList<ItemMultiplayCase> caseArrayList;
-    AdapterMultiplay adapter;
+    private ArrayList<ItemMultiplayCase> caseArrayList;
+    private AdapterMultiplay adapter;
     private Dialog predict_dialog;
-    ArrayList<String> stringCaselist_1;
-    ArrayList<String> stringCaselist_2;
-
+    private ArrayList<String> stringCaselist_1;
+    private ArrayList<String> stringCaselist_2;
+    public static final String FORWARD_NAMELIST = "NAME_LIST";
+    public static final String FORWARD_PREDICT = "PREDICT_LIST";
     //결과예측 문자열 예측안했다면 null, ispredict 결과예측을 안한상태
     //0 경우예측, 1 이름예측
     String[] predict_string_array;
-    private boolean isPredict=false;
+    public static boolean isPredict = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -186,7 +189,6 @@ public class MultiplayActivity extends BaseDrawerActivity implements View.OnClic
                 isPredict = true;
                 //Log.d("경우 선택", predict_string_array[0]);
                 //Log.d("이름 선택 ", predict_string_array[1]);
-                Toast.makeText(getApplicationContext(), "확인버튼 클릭", Toast.LENGTH_SHORT).show();
                 predict_dialog.dismiss();
             }
         });
@@ -203,14 +205,21 @@ public class MultiplayActivity extends BaseDrawerActivity implements View.OnClic
                     Toast.makeText(getApplicationContext(), "경우의 수를 제대로 입력해주세요.", Toast.LENGTH_SHORT).show();
                     //다이얼로그를 띄어 이대로 진행할거냐고 물어봄
                 else {
-                    Log.d("size", Integer.toString(stringCaselist_1.size()));
-                    Log.d("size", Integer.toString(stringCaselist_2.size()));
+                    //Log.d("size", Integer.toString(stringCaselist_1.size()));
+                    //Log.d("size", Integer.toString(stringCaselist_2.size()));
                     new AlertDialog.Builder(this)
                             .setTitle("게임시작")
                             .setMessage("입력한 경우의 수로 게임을 시작합니다")
                             .setPositiveButton("확인", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
-                                    // continue with delete
+                                    Intent intent = new Intent(MultiplayActivity.this, GameAnimationActivity.class);
+                                    intent.putExtra(SoloPlayActivity.FORWARD_ACTIVITY_NUM, 2);
+                                    intent.putStringArrayListExtra(SoloPlayActivity.FORWARD_CASELIST, stringCaselist_1);
+                                    intent.putStringArrayListExtra(MultiplayActivity.FORWARD_NAMELIST, stringCaselist_2);
+                                    if (isPredict)
+                                        intent.putExtra(MultiplayActivity.FORWARD_PREDICT, predict_string_array);
+                                    startActivity(intent);
+                                    finish();
                                 }
                             })
                             .setNegativeButton("취소", new DialogInterface.OnClickListener() {
