@@ -17,7 +17,7 @@ public class FavoriteDBHelper extends SQLiteOpenHelper {
     public static final String TABLE_NAME="favorite";
     public static final String KEY_FAVORITE_TEXT="ftext";
     public static final String KEY_ID="id";
-    public static final String SEPERATOR_FAVORITE = ",";
+    public static final String SEPERATOR_FAVORITE = ", ";
 
     public FavoriteDBHelper(Context context){
         super(context, DATABASE_NAME, null, 1);
