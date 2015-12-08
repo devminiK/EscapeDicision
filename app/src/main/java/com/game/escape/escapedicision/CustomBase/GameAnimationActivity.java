@@ -41,6 +41,7 @@ public class GameAnimationActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        dialog = null;
         dbHelper = new FavoriteDBHelper(this);
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
@@ -127,7 +128,7 @@ public class GameAnimationActivity extends AppCompatActivity {
             case 1:
                 selected_case_id = random.nextInt(caseList.size());
                 dialog.setResultMessage(caseList.get(selected_case_id));
-                dialog.setGameImage(selected_id);
+                dialog.setGameImage(0);
                 break;
             case 2:
                 selected_case_id = random.nextInt(caseList.size());
