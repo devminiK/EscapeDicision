@@ -28,7 +28,7 @@ public class ResultDialog extends Dialog {
     private ImageView random_game_image;
     private View.OnClickListener favorite_listner;
     //이미지 아이디 배열
-    private int[] image_id = {R.mipmap.circle_ladder};
+    private int[] image_id = {R.mipmap.circle_ladder, R.mipmap.threeways, R.mipmap.fourways, R.mipmap.pickup, R.mipmap.circle_ladder};
     public ResultDialog(Context context, View.OnClickListener favorite_listner) {
         super(context);
         this.context = context;

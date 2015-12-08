@@ -128,12 +128,13 @@ public class GameAnimationActivity extends AppCompatActivity {
             case 1:
                 selected_case_id = random.nextInt(caseList.size());
                 dialog.setResultMessage(caseList.get(selected_case_id));
-                dialog.setGameImage(0);
+                dialog.setGameImage(selected_id);
                 break;
             case 2:
                 selected_case_id = random.nextInt(caseList.size());
                 selected_name_id = random.nextInt(nameList.size());
                 dialog.setResultMessage(caseList.get(selected_case_id) + " & " + nameList.get(selected_name_id));
+                dialog.setGameImage(selected_id);
                 if (MultiplayActivity.isPredict)
                     dialog.setPredictMessage(predict_string[0].equals(caseList.get(selected_case_id)) && predict_string[1].equals(nameList.get(selected_name_id)));
                 break;
