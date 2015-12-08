@@ -37,7 +37,7 @@ public class GameAnimationActivity extends AppCompatActivity {
     FavoriteDBHelper dbHelper;
     private boolean is_saved = false;
     //애니메이션 아이디 배열
-    private int[] id_Animation = {R.drawable.ani_ladder/*, R.drawable.ani_rulet_3, R.drawable.ani_rulet_4*/};
+    private int[] id_Animation = {R.drawable.ani_ladder, R.drawable.ani_rulet_3, R.drawable.ani_rulet_4,R.drawable.ani_drawing_lots,R.drawable.ani_ladder2};
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
