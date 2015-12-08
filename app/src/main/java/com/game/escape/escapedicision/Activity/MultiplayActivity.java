@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.game.escape.escapedicision.CustomBase.AdapterMultiplay;
 import com.game.escape.escapedicision.CustomBase.BaseDrawerActivity;
+import com.game.escape.escapedicision.CustomBase.FavoriteDBHelper;
 import com.game.escape.escapedicision.CustomBase.GameAnimationActivity;
 import com.game.escape.escapedicision.CustomBase.ItemMultiplayCase;
 import com.game.escape.escapedicision.R;
@@ -43,19 +44,30 @@ public class MultiplayActivity extends BaseDrawerActivity implements View.OnClic
     //0 경우예측, 1 이름예측
     String[] predict_string_array;
     public static boolean isPredict = false;
+    private Bundle bundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initFromOtherView(R.layout.activity_multiplay);
         initView();
-        //처음 경우의수 2개로
         isPredict = false;
-        num_case_textview.setText("2");
         caseArrayList = new ArrayList<ItemMultiplayCase>();
         adapter = new AdapterMultiplay(this, R.layout.item_multi_case_input, caseArrayList);
-        adapter.insert(new ItemMultiplayCase(2, "", ""), 0);
-        adapter.insert(new ItemMultiplayCase(1, "", ""), 0);
+        bundle = getIntent().getExtras();
+        if (bundle != null) {
+            String [] str_case = bundle.getString(FavoriteActivity.FORWARD_FTOCASE).split(FavoriteDBHelper.SEPERATOR_FAVORITE);
+            String [] name_case = bundle.getString(FavoriteActivity.FORWARD_FTONAME).split(FavoriteDBHelper.SEPERATOR_FAVORITE);
+            num_case_textview.setText(Integer.toString(str_case.length));
+            for (int i=0; i<str_case.length; i++)
+                adapter.insert(new ItemMultiplayCase(str_case[i], name_case[i]), 0);
+            adapter.changeOrderTag();
+        }
+        else {
+            num_case_textview.setText("2");
+            adapter.insert(new ItemMultiplayCase(2, "", ""), 0);
+            adapter.insert(new ItemMultiplayCase(1, "", ""), 0);
+        }
         case_list.setAdapter(adapter);
     }
 
@@ -82,6 +94,8 @@ public class MultiplayActivity extends BaseDrawerActivity implements View.OnClic
 
     private boolean toCaseString() {
         //케이스에 있는 경우의 수를 하나씩 가져와서 스트링에 넣는다. 비어있을 경우 false를 반환하고 제대로 되었다면 add
+        if (caseArrayList.size()<2)
+            return false;
         stringCaselist_1 = new ArrayList<String>();
         stringCaselist_2 = new ArrayList<String>();
         for (int i = 0; i < caseArrayList.size(); i++) {
@@ -189,6 +203,7 @@ public class MultiplayActivity extends BaseDrawerActivity implements View.OnClic
             public void onClick(View v) {
                 //확인버튼, 스피너에서 선택된 아이템을 받아오도록 할것
                 isPredict = true;
+                Toast.makeText(getApplicationContext(), "결과 예측이 완료되었습니다.", Toast.LENGTH_SHORT).show();
                 //Log.d("경우 선택", predict_string_array[0]);
                 //Log.d("이름 선택 ", predict_string_array[1]);
                 predict_dialog.dismiss();

@@ -27,6 +27,8 @@ public class ResultDialog extends Dialog {
     private TextView predict_text, result_text;
     private ImageView random_game_image;
     private View.OnClickListener favorite_listner;
+    //이미지 아이디 배열
+    private int[] image_id = {R.mipmap.circle_ladder};
     public ResultDialog(Context context, View.OnClickListener favorite_listner) {
         super(context);
         this.context = context;
@@ -73,7 +75,8 @@ public class ResultDialog extends Dialog {
         result_text.setText(resultMessage+baseResultMessage);
     }
 
-    public void setGameImage(){
+    public void setGameImage(int id){
         //항상불러와야함 게임 이미지 표시
+        random_game_image.setImageResource(image_id[id]);
     }
 }

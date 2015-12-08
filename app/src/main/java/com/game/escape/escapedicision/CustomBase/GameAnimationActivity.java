@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.game.escape.escapedicision.Activity.MultiplayActivity;
@@ -27,6 +28,7 @@ public class GameAnimationActivity extends AppCompatActivity {
     private Random random = new Random(System.currentTimeMillis());
     private int selected_case_id;
     private int selected_name_id;
+    private int selected_id;
     private ArrayList<String> caseList;
     private ArrayList<String> nameList;
     private String[] predict_string;
@@ -34,6 +36,8 @@ public class GameAnimationActivity extends AppCompatActivity {
     ResultDialog dialog;
     FavoriteDBHelper dbHelper;
     private boolean is_saved = false;
+    //애니메이션 아이디 배열
+    private int[] id_Animation = {R.drawable.ani_ladder/*, R.drawable.ani_rulet_3, R.drawable.ani_rulet_4*/};
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,14 +62,16 @@ public class GameAnimationActivity extends AppCompatActivity {
 
     private void initGifAnimation() {
         GifImageView img = new GifImageView(this);
+        selected_id = random.nextInt(id_Animation.length);
         try {
-            gifDrawable = new GifDrawable(getResources(), R.drawable.ladder_animation);
+            gifDrawable = new GifDrawable(getResources(), id_Animation[selected_id]);
             gifDrawable.stop();
             gifDrawable.setLoopCount(1);
         } catch (IOException e) {
             e.printStackTrace();
         }
         img.setImageDrawable(gifDrawable);
+        img.setScaleType(ImageView.ScaleType.CENTER_CROP);
         setContentView(img);
         GifThread gifThread = new GifThread();
         handler = new Handler();
@@ -92,14 +98,14 @@ public class GameAnimationActivity extends AppCompatActivity {
                 if (is_saved == false &&activityNum == 1) {
                     str = TextUtils.join(FavoriteDBHelper.SEPERATOR_FAVORITE, caseList);
                     //Log.d("String", str);
-                    dbHelper.addFav(str);
+                    dbHelper.addFav(str, activityNum);
                     is_saved = true;
                     Toast.makeText(getApplicationContext(), "즐겨찾기에 성공적으로 저장되었습니다.", Toast.LENGTH_SHORT).show();
                 } else if (is_saved == false && activityNum == 2){
                     str = TextUtils.join(FavoriteDBHelper.SEPERATOR_FAVORITE, caseList);
                     String str_2 = TextUtils.join(FavoriteDBHelper.SEPERATOR_FAVORITE, nameList);
                     String new_string = str+" / "+str_2;
-                    dbHelper.addFav(new_string);
+                    dbHelper.addFav(new_string, activityNum);
                     is_saved=true;
                     Toast.makeText(getApplicationContext(), "즐겨찾기에 성공적으로 저장되었습니다.", Toast.LENGTH_SHORT).show();
                 }
@@ -121,6 +127,7 @@ public class GameAnimationActivity extends AppCompatActivity {
             case 1:
                 selected_case_id = random.nextInt(caseList.size());
                 dialog.setResultMessage(caseList.get(selected_case_id));
+                dialog.setGameImage(selected_id);
                 break;
             case 2:
                 selected_case_id = random.nextInt(caseList.size());

@@ -8,7 +8,7 @@
     android:gravity="center_horizontal" tools:context=".MainActivity">
 
     <ImageView
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="34dp"
         android:layout_width="wrap_content"
         android:layout_height="142dp"
         android:scaleType="fitCenter"
@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="18dp"
-        android:layout_marginTop="26dp"
+        android:layout_marginTop="32dp"
         android:paddingRight="18dp">
         <ImageButton
             android:id="@+id/button_soloplay"
@@ -41,7 +41,7 @@
     </RelativeLayout>
     <ImageButton
         android:id="@+id/button_favorite"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
         android:padding="6dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -50,6 +50,8 @@
         android:background="@android:color/transparent"/>
     <ImageButton
         android:id="@+id/button_memo"
+
+
         android:layout_marginTop="4dp"
         android:padding="6dp"
         android:layout_width="wrap_content"

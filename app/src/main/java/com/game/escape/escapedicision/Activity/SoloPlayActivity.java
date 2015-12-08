@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.game.escape.escapedicision.CustomBase.AdapterSoloplay;
 import com.game.escape.escapedicision.CustomBase.BaseDrawerActivity;
+import com.game.escape.escapedicision.CustomBase.FavoriteDBHelper;
 import com.game.escape.escapedicision.CustomBase.GameAnimationActivity;
 import com.game.escape.escapedicision.CustomBase.ItemSoloplayCase;
 import com.game.escape.escapedicision.R;
@@ -31,20 +32,32 @@ public class SoloPlayActivity extends BaseDrawerActivity implements View.OnClick
     private AdapterSoloplay adapter;
     public static final String FORWARD_CASELIST = "CASE_LIST";
     public static final String FORWARD_ACTIVITY_NUM = "ACTIVITY_NUM";
+    private Bundle bundle = null;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_solo_play);
         initFromOtherView(R.layout.activity_solo_play);
         initView();
-        //처음에는 경우의 수가 2개부터
         MultiplayActivity.isPredict = false;
-        num_case_textview.setText("2");
         caseArrayList = new ArrayList<ItemSoloplayCase>();
         adapter = new AdapterSoloplay(this, R.layout.item_solo_case_input, caseArrayList);
-        //처음에 경우의수가 두개부터 잇을경우. 태그는 거꾸로 만들어줌
-        adapter.insert(new ItemSoloplayCase(2, ""), 0);
-        adapter.insert(new ItemSoloplayCase(1, ""), 0);
+        bundle = getIntent().getExtras();
+        if (bundle != null) {
+            //Log.d("solo", "favorite");
+            String [] str_case = bundle.getString(FavoriteActivity.FORWARD_FTOCASE).split(FavoriteDBHelper.SEPERATOR_FAVORITE);
+            //Log.d("길이",  Integer.toString(str_case.length));
+            num_case_textview.setText(Integer.toString(str_case.length));
+            for (String aa : str_case)
+                adapter.insert(new ItemSoloplayCase(aa), 0);
+            adapter.changeOrderTag();
+        }
+        else {
+            //Log.d("solo", "nothing");
+            num_case_textview.setText("2");
+            adapter.insert(new ItemSoloplayCase(2, ""), 0);
+            adapter.insert(new ItemSoloplayCase(1, ""), 0);
+        }
         case_list.setAdapter(adapter);
     }
 
@@ -99,6 +112,8 @@ public class SoloPlayActivity extends BaseDrawerActivity implements View.OnClick
     }
     private boolean toCaseString(){
         //케이스에 있는 경우의 수를 하나씩 가져와서 스트링에 넣는다. 비어있을 경우 false를 반환하고 제대로 되었다면 add
+        if (caseArrayList.size()<2)
+            return false;
         stringCaselist = new ArrayList<String>();
         for (int i = 0; i<caseArrayList.size(); i++){
             String temp = caseArrayList.get(i).getInput();
